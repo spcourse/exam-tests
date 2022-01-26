@@ -37,35 +37,39 @@ def has_function(test, file_name, function_name, expected_args):
     test.description = lambda : f"Defines the function `{function_name}()`"
 
 @t.test(0)
-def containsDivisors(test):
-    has_function(test, _fileName, "divisors", ['n'])
+def containsFizzy(test):
+    # has_function(test, _fileName, "fizzy", ['n'])
+	test.test = lambda : assertlib.fileContainsFunctionDefinitions(_fileName, "fizzy")
+	test.description = lambda : "defines the function fizzy"
+	test.timeout = lambda : 10
 
-@t.passed(containsDivisors)
+@t.passed(containsFizzy)
 @t.test(1)
-def testDivisors1(test):
-    _input = 80
-    _answer = [1, 2, 4, 5, 8, 10, 16, 20, 40, 80]
-    _fn_name = "divisors"
+def testFizzy1(test):
+    input = 100
+    answer = [15, 21, 30, 42, 45, 60, 63, 75, 84, 90]
+    fn_name = "fizzy"
 
     def testMethod():
-        _fn = lib.getFunction(_fn_name, _fileName)
-        _output = _fn(_input)
-        if _output == _answer:
-            return True, f"Correct answer for input {_input}!"
+        fn = lib.getFunction(fn_name, _fileName)
+        output = fn(input)
+        if output == answer:
+            return True, f"Correct answer for input {input}!"
         else:
-            return False, f"Incorrect answer for input {_input}."
+            return False, f"Incorrect answer for input {input}."
 
 
     test.test = testMethod
-    test.description = lambda : f"Testing {_fn_name}({_input})"
+    test.description = lambda : f"Testing {fn_name}({input})"
     test.timeout = lambda : 90
 
-@t.passed(containsDivisors)
+#
+@t.passed(containsFizzy)
 @t.test(2)
-def testDivisors2(test):
-    _input = 1000
-    _answer = [1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000]
-    _fn_name = "divisors"
+def testFizzy2(test):
+    _input = 50
+    _answer = [15, 21, 30, 42, 45]
+    _fn_name = "fizzy"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
@@ -82,64 +86,24 @@ def testDivisors2(test):
 
 
 @t.test(3)
-def containsPerfectList(test):
-    has_function(test, _fileName, "perfect_list", ['n'])
-
-@t.passed(containsPerfectList)
-@t.test(4)
-def testPerfect1(test):
-    _input = 29
-    _answer = [0, 6, 28]
-    _fn_name = "perfect_list"
-
-    def testMethod():
-        _fn = lib.getFunction(_fn_name, _fileName)
-        _output = _fn(_input)
-        if _output == _answer:
-            return True, f"Correct answer for input {_input}!"
-        else:
-            return False, f"Incorrect answer for input {_input}."
-
-
-    test.test = testMethod
-    test.description = lambda : f"Testing {_fn_name}({_input})"
-    test.timeout = lambda : 90
-
-@t.passed(containsPerfectList)
-@t.test(5)
-def testPerfect1(test):
-    _input = 497
-    _answer = [0, 6, 28, 496]
-    _fn_name = "perfect_list"
-
-    def testMethod():
-        _fn = lib.getFunction(_fn_name, _fileName)
-        _output = _fn(_input)
-        if _output == _answer:
-            return True, f"Correct answer for input {_input}!"
-        else:
-            return False, f"Incorrect answer for input {_input}."
-
-
-    test.test = testMethod
-    test.description = lambda : f"Testing {_fn_name}({_input})"
-    test.timeout = lambda : 90
+def containsPrint_decomposition(test):
+    has_function(test, _fileName, "print_decomposition", ['n'])
 
 @t.test(6)
-def containsAutocorrect(test):
-    has_function(test, _fileName, "autocorrect", ['text'])
+def containsFilter_words_starting_with(test):
+    has_function(test, _fileName, "filter_words_starting_with", ['text', 'letter'])
 
-@t.passed(containsAutocorrect)
+@t.passed(containsFilter_words_starting_with)
 @t.test(7)
-def testAutocorrect1(test):
-    _input = "Fuzzy Wuzzy was a bear . Fuzzy Wuzzy had no hair.Fuzzy Wuzzy wasn’t fuzzy , was he ?"
-    _answer = "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t fuzzy, was he?"
-    _fn_name = "autocorrect"
+def testFilter_words_starting_with1(test):
+    _input = "David Donald Doo dreamed a dozen doughnuts and a duck-dog, too.", 'd'
+    _answer = ['David', 'Donald', 'Doo', 'dreamed', 'dozen', 'doughnuts', 'duck-dog']
+    _fn_name = "filter_words_starting_with"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
-        _output = _fn(_input)
-        if _output.strip() == _answer.strip():
+        _output = _fn(*_input)
+        if _output == _answer:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
@@ -150,17 +114,17 @@ def testAutocorrect1(test):
     test.timeout = lambda : 90
 
 
-@t.passed(containsAutocorrect)
+@t.passed(containsFilter_words_starting_with)
 @t.test(8)
-def testAutocorrect2(test):
-    _input = "My first program:Hello , world !"
-    _answer = "My first program: Hello, world!"
-    _fn_name = "autocorrect"
+def testFilter_words_starting_with2(test):
+    _input = "Those lazy lizards are lying like lumps in the leaves.", 'l'
+    _answer = ['lazy', 'lizards', 'lying', 'like', 'lumps', 'leaves']
+    _fn_name = "filter_words_starting_with"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
-        _output = _fn(_input)
-        if _output.strip() == _answer.strip():
+        _output = _fn(*_input)
+        if _output == _answer:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
@@ -172,15 +136,15 @@ def testAutocorrect2(test):
 
 
 @t.test(9)
-def containsTotal_away_goals(test):
-    has_function(test, _fileName, "total_away_goals", ['filename'])
+def containsLongest_streak(test):
+    has_function(test, _fileName, "longest_streak", ['filename'])
 
-@t.passed(containsTotal_away_goals)
+@t.passed(containsLongest_streak)
 @t.test(10)
-def testTotal_away_goals1(test):
+def testLongest_streak1(test):
     _input = 'barca.txt'
-    _answer = 200
-    _fn_name = "total_away_goals"
+    _answer = 13
+    _fn_name = "longest_streak"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
@@ -195,12 +159,12 @@ def testTotal_away_goals1(test):
     test.description = lambda : f"Testing {_fn_name}(\"{_input}\")"
     test.timeout = lambda : 90
 
-@t.passed(containsTotal_away_goals)
+@t.passed(containsLongest_streak)
 @t.test(11)
-def testTotal_away_goals2(test):
+def testLongest_streak2(test):
     _input = 'barca_short.txt'
-    _answer = 13
-    _fn_name = "total_away_goals"
+    _answer = 1
+    _fn_name = "longest_streak"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
