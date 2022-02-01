@@ -126,15 +126,15 @@ def testPerfect1(test):
     test.timeout = lambda : 90
 
 @t.test(6)
-def containsAutocorrect(test):
-    has_function(test, _fileName, "autocorrect", ['text'])
+def containsShort(test):
+    has_function(test, _fileName, "short", ['text'])
 
-@t.passed(containsAutocorrect)
+@t.passed(containsShort)
 @t.test(7)
-def testAutocorrect1(test):
-    _input = "Fuzzy Wuzzy was a bear . Fuzzy Wuzzy had no hair.Fuzzy Wuzzy wasn’t fuzzy , was he ?"
-    _answer = "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t fuzzy, was he?"
-    _fn_name = "autocorrect"
+def testShort1(test):
+    _input = "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t fuzzy, was he?"
+    _answer = "no"
+    _fn_name = "short"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
@@ -149,13 +149,32 @@ def testAutocorrect1(test):
     test.description = lambda : f"Testing {_fn_name}(\"{_input}\")"
     test.timeout = lambda : 90
 
-
-@t.passed(containsAutocorrect)
+@t.passed(containsShort)
 @t.test(8)
-def testAutocorrect2(test):
-    _input = "My first program:Hello , world !"
-    _answer = "My first program: Hello, world!"
-    _fn_name = "autocorrect"
+def testShort2(test):
+    _input = "The best way to explain it is to do it."
+    _answer = "to"
+    _fn_name = "short"
+
+    def testMethod():
+        _fn = lib.getFunction(_fn_name, _fileName)
+        _output = _fn(_input)
+        if _output.strip() == _answer.strip():
+            return True, f"Correct answer for input {_input}!"
+        else:
+            return False, f"Incorrect answer for input {_input}."
+
+
+    test.test = testMethod
+    test.description = lambda : f"Testing {_fn_name}(\"{_input}\")"
+    test.timeout = lambda : 90
+
+@t.passed(containsShort)
+@t.test(9)
+def testShort3(test):
+    _input =  "They gave two! How generous."
+    _answer = "two"
+    _fn_name = "short"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
@@ -171,12 +190,13 @@ def testAutocorrect2(test):
     test.timeout = lambda : 90
 
 
-@t.test(9)
+
+@t.test(10)
 def containsTotal_away_goals(test):
     has_function(test, _fileName, "total_away_goals", ['filename'])
 
 @t.passed(containsTotal_away_goals)
-@t.test(10)
+@t.test(11)
 def testTotal_away_goals1(test):
     _input = 'barca.txt'
     _answer = 200
@@ -196,7 +216,7 @@ def testTotal_away_goals1(test):
     test.timeout = lambda : 90
 
 @t.passed(containsTotal_away_goals)
-@t.test(11)
+@t.test(12)
 def testTotal_away_goals2(test):
     _input = 'barca_short.txt'
     _answer = 13
