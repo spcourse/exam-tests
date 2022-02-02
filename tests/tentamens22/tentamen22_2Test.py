@@ -133,7 +133,7 @@ def containsShort(test):
 @t.test(7)
 def testShort1(test):
     _input = "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t fuzzy, was he?"
-    _answer = "no"
+    _answer = 2
     _fn_name = "short"
 
     def testMethod():
@@ -153,7 +153,7 @@ def testShort1(test):
 @t.test(8)
 def testShort2(test):
     _input = "The best way to explain it is to do it."
-    _answer = "to"
+    _answer = 2
     _fn_name = "short"
 
     def testMethod():
@@ -173,7 +173,7 @@ def testShort2(test):
 @t.test(9)
 def testShort3(test):
     _input =  "They gave two! How generous."
-    _answer = "two"
+    _answer = 3
     _fn_name = "short"
 
     def testMethod():
