@@ -139,7 +139,7 @@ def testShort1(test):
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
         _output = _fn(_input)
-        if _output.strip() == _answer.strip():
+        if _output == _answer:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
@@ -159,7 +159,7 @@ def testShort2(test):
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
         _output = _fn(_input)
-        if _output.strip() == _answer.strip():
+        if _output == _answer:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
@@ -179,7 +179,7 @@ def testShort3(test):
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
         _output = _fn(_input)
-        if _output.strip() == _answer.strip():
+        if _output == _answer:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
