@@ -199,13 +199,12 @@ def containsTotal_away_goals(test):
 @t.test(11)
 def testTotal_away_goals1(test):
     _input = 'barca.txt'
-    _answer = 200
     _fn_name = "total_away_goals"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
         _output = _fn(_input)
-        if _output == _answer:
+        if _output == 200 or _output = 129:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
@@ -219,13 +218,12 @@ def testTotal_away_goals1(test):
 @t.test(12)
 def testTotal_away_goals2(test):
     _input = 'barca_short.txt'
-    _answer = 13
     _fn_name = "total_away_goals"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
         _output = _fn(_input)
-        if _output == _answer:
+        if _output == 13 or _output = 4:
             return True, f"Correct answer for input {_input}!"
         else:
             return False, f"Incorrect answer for input {_input}."
