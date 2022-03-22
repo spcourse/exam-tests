@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def sandbox():
-    lib.require("election_results_amsterdam_2022.csv", "https://raw.githubusercontent.com/spcourse/exam-tests/main/data/election_results_amsterdam_2022.txt")
+    lib.require("election_results_amsterdam_2022.csv", "https://raw.githubusercontent.com/spcourse/exam-tests/main/data/election_results_amsterdam_2022.csv")
 
 def fn_string(fname, args):
     return f"{fname}({', '.join(args)})"
@@ -42,7 +42,7 @@ def containsEuros_to_percentage(test):
 
 @t.passed(containsEuros_to_percentage)
 @t.test(1)
-def testFizzy1(test):
+def testEuros_to_percentage(test):
     input = {'rent': 735, 'utlities': 221,
              'food': 167, 'social activities': 185,
              'internet + netflix + spotify': 58, 'phone': 25}
@@ -71,13 +71,13 @@ def containsHalf_double(test):
 
 @t.passed(containsHalf_double)
 @t.test(7)
-def testFilter_words_starting_with1(test):
+def testHalf_double(test):
     input = [1, 2, 3, 4, 5]
     answer = [2, 1, 6, 2, 10]
     fn_name = "half_double"
 
     def testMethod():
-        fn = lib.getFunction(fn_name, fileName)
+        fn = lib.getFunction(fn_name, _fileName)
         output = fn(input)
         if output == answer:
             return True, f"Correct answer for input {input}!"
@@ -95,7 +95,7 @@ def containsTop_candidates(test):
 
 @t.passed(containsTop_candidates)
 @t.test(10)
-def testFilter_words_starting_with1(test):
+def testTop_candidates(test):
     input = pd.read_csv('election_results_amsterdam_2022.csv')
     print(input)
     parties = ['1 GROENLINKS', '1 GROENLINKS',
@@ -107,10 +107,10 @@ def testFilter_words_starting_with1(test):
     fn_name = "top_candidates"
 
     def testMethod():
-        fn = lib.getFunction(fn_name, fileName)
+        fn = lib.getFunction(fn_name, _fileName)
         output = fn(input)
         parties_outp = sorted(output['party'].to_list())
-        candidate_nrs_outp = sorted(top['candidate_number'].to_list())
+        candidate_nrs_outp = sorted(output['candidate_number'].to_list())
         if parties_outp == parties and candidate_nrs_outp == candidate_nrs:
             return True, f"Correct answer!"
         else:
@@ -118,5 +118,5 @@ def testFilter_words_starting_with1(test):
 
 
     test.test = testMethod
-    test.description = lambda : f"Testing {fn_name}({input})"
+    test.description = lambda : f"Testing {fn_name}(...)"
     test.timeout = lambda : 90
