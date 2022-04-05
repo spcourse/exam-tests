@@ -127,14 +127,14 @@ def testMost_divisors1(test):
 
 @t.test(6)
 def containsRepeated_length_count(test):
-    has_function(test, _fileName, "repeated_length_count", ['text'])
+    has_function(test, _fileName, "repetition_count", ['text'])
 
 @t.passed(containsRepeated_length_count)
 @t.test(7)
 def testRepeated_length_count2(test):
-    _input = "a b aa bb a b c"
-    _answer = 4
-    _fn_name = "repeated_length_count"
+    _input = "x aa aa aa y bb bb"
+    _answer = 3
+    _fn_name = "repetition_count"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
@@ -152,9 +152,9 @@ def testRepeated_length_count2(test):
 @t.passed(containsRepeated_length_count)
 @t.test(8)
 def testRepeated_length_count2(test):
-    _input = "Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair. Fuzzy Wuzzy wasn’t fuzzy, was he?"
-    _answer = 3
-    _fn_name = "repeated_length_count"
+    _input = "x aa l aa aa y bb bb"
+    _answer = 2
+    _fn_name = "repetition_count"
 
     def testMethod():
         _fn = lib.getFunction(_fn_name, _fileName)
