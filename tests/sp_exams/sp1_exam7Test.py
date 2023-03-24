@@ -25,7 +25,7 @@ def containsQ1(test):
 @t.passed(containsQ1)
 @t.test(1)
 def applyQ1_1(test):
-    test_direct_compare_fn(test, _fileName, fname1, (10),), [10, 6, 4, 3, 1])
+    test_direct_compare_fn(test, _fileName, fname1, (10,), [10, 6, 4, 3, 1])
 
 @t.passed(containsQ1)
 @t.test(2)
