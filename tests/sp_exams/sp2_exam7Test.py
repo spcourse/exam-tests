@@ -37,7 +37,7 @@ determiners = {'the', 'a', 'this', 'their'}
 
 @t.test(10)
 def containsQ2(test):
-    has_function(test, _fileName, "count_category", ['grades'])
+    has_function(test, _fileName, "count_category", ['lemma_counts', 'category'])
 
 @t.passed(containsQ2)
 @t.test(11)
