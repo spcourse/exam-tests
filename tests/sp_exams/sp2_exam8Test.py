@@ -26,7 +26,7 @@ test_text2 = "Glowing unicorns great."
 test_return2 = {'g': 0.15, 'l': 0.05, 'o': 0.1, 'w': 0.05, 'i': 0.1, 'n': 0.15, 'u': 0.05,
                 'c': 0.05, 'r': 0.1, 's': 0.05, 'e': 0.05, 'a': 0.05, 't': 0.05}
 
-@t.passed(containsQ2)
+@t.passed(containsQ1)
 @t.test(2)
 def applyQ1_2(test):
     test_direct_compare_fn(test, _fileName, fn1, (test_text2,), test_return2)
