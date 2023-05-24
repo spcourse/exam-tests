@@ -11,7 +11,7 @@ from helpers import has_function, test_direct_compare_fn
 fn1 =  "letter_frequency"
 @t.test(0)
 def containsQ1(test):
-    has_function(test, _fileName, fn, ['text'])
+    has_function(test, _fileName, fn1, ['text'])
 
 
 test_text1 = "Hello, world"
