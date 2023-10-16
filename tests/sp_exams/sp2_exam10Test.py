@@ -15,7 +15,7 @@ fun1_def = (declarative
 
 text1 = "'GOD' is an acronym which stands for 'GOD Over Djinn'."
 text2 = """There was nothing so very remarkable in that; nor did Alice think it
- so very much out of the way to hear the Rabbit say to itself, `Oh dear! Oh dear!
+ so very much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear!
  I shall be late!'"""
 
 test1_1 = test()(fun1_def.call(text1).returns(["god"]))
@@ -46,18 +46,18 @@ test2_2 = test()(fun2_def.call(text2, sentiment_of_word).returns(-13))
 
 ######## Q3 ########
 
-# fun3_def = (declarative
-#     .function("find_artist_of_most_popular_song_based_on_number_of_streams")
-#     .params("filename")
-#     .returnType(str)
-# )
-#
-# test3_1 = test()(fun3_def.call("spotify.csv").returns("The Weeknd"))
-#
-# fun4_def = (declarative
-#     .function("find_most_popular_release_month_based_on_number_of_songs")
-#     .params("filename")
-#     .returnType(str)
-# )
-#
-# test4_1 = test()(fun3_def.call("spotify.csv").returns("2022-5"))
+fun3_def = (declarative
+    .function("find_artist_of_most_popular_song_based_on_number_of_streams")
+    .params("filename")
+    .returnType(str)
+)
+
+test3_1 = test()(fun3_def.call("spotify.csv").returns("The Weeknd"))
+
+fun4_def = (declarative
+    .function("find_most_popular_release_month_based_on_number_of_songs")
+    .params("filename")
+    .returnType(str)
+)
+
+test4_1 = test()(fun4_def.call("spotify.csv").returns("2022-5"))
