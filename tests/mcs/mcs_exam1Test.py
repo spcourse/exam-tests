@@ -1,6 +1,6 @@
 from checkpy import *
 
-download("film.csv", "https://raw.githubusercontent.com/uvaai/pdp/2023/exam/data/film.csv")
+download("film.csv", "https://raw.githubusercontent.com/spcourse/mcs/2023/exams/exam/film.csv")
 
 ######## Q1 ########
 
