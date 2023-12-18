@@ -29,13 +29,26 @@ test2_1 = test()(fun2_def.call("Why is a raven like a writing desk?").returns("i
 test2_2 = test()(fun2_def.call("You can always take more than nothing.").returns("can You take always than more nothing."))
 
 
-######## Q3 ########
+######## Q4 ########
 
 fun3_def = (declarative
+    .function("gregory_leibniz")
+    .params("n")
+    .returnType(float)
+)
+
+test3_1 = test()(fun3_def.call(1).returns(4))
+test3_2 = test()(fun3_def.call(10).returns(3.0418396189294032))
+test3_3 = test()(fun3_def.call(1000000).returns(3.1415916535897743))
+
+
+######## Q4 ########
+
+fun4_def = (declarative
     .function("home_advantage")
     .params("filename")
     .returnType(int)
 )
 
-test3_1 = test()(fun3_def.call("barca.txt").returns(15))
-test3_2 = test()(fun3_def.call("barca_short.txt").returns(2))
+test4_1 = test()(fun4_def.call("barca.txt").returns(15))
+test4_2 = test()(fun4_def.call("barca_short.txt").returns(2))
