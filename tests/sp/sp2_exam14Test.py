@@ -65,7 +65,7 @@ def test2_2():
 ######## Q3 ########
 
 fun3_def = (declarative
-    .function("find_most_popular_song_based_on_number_of_streams")
+    .function("find_most_popular_song")
     .params("filename")
 )
 
