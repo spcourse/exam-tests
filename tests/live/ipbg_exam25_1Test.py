@@ -85,7 +85,6 @@ class LongList(list):
         return f"{repr(self[:3])[:-1]}, ...]" #f"{super().__repr__()[:4]}..."
 english_words = LongList(['alike', 'apple', 'beach', 'beard', 'bicycle', 'bread', 'bride', 'brisk', 'brush', 'cage', 'candy', 'chair', 'charm', 'child', 'clock', 'close', 'cloud', 'dance', 'dove', 'dream', 'dusty', 'earth', 'field', 'fight', 'fishy', 'flame', 'flour', 'froze', 'fruit', 'glass', 'gloom', 'glove', 'goose', 'grape', 'grasp', 'grass', 'heart', 'house', 'knife', 'liver', 'loose', 'lunch', 'mango', 'match', 'money', 'movie', 'party', 'peach', 'petty', 'piano', 'plane', 'plant', 'plaza', 'poise', 'pound', 'purse', 'roast', 'robin', 'rocky', 'salad', 'shade', 'shell', 'shift', 'shine', 'shirt', 'shrub', 'skirt', 'smile', 'smoke', 'spice', 'squad', 'stone', 'stove', 'straw', 'sugar', 'sunny', 'sweat', 'sweep', 'swine', 'swoon', 'swoop', 'table', 'tiger', 'tramp', 'tree', 'trick', 'vivid', 'waste', 'water', 'whale', 'world', 'zebra'])
 my_letters =  LongList(["a", "a", "b", "r", "p", "d", "e", "p", "l", "z", "s", "t"])
-print(english_words)
 test5_1 = test()(fun5def.call(english_words, list('bicycle')).returns(['bicycle']))
 test5_2 = test()(fun5def.call(english_words, my_letters).returns(['apple', 'beard', 'bread', 'plaza', 'salad', 'table', 'zebra']))
 
