@@ -2,7 +2,7 @@ from checkpy import *
 import typing
 import pandas as pd
 
-only("sp2_exam18.py")
+only("sp2_exam.py")
 download("films.csv", "https://raw.githubusercontent.com/spcourse/exam-tests/main/data/films.csv")
 
 

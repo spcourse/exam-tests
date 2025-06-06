@@ -2,7 +2,7 @@ from checkpy import *
 import typing
 import pandas as pd
 
-only("sp1_exam18.py")
+only("sp1_exam.py")
 download("barca.txt", "https://raw.githubusercontent.com/spcourse/exam-tests/main/data/barca.txt")
 
 
