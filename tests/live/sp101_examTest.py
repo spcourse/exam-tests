@@ -1,51 +1,61 @@
-# Author: Puck te Rietmole
-# Date: 28/04/2025
-# SP101 Exam 4 solutions code
+from checkpy import *
+import typing
+
+only("sp101_exam.py")
 
 
-# exc1
-def remove_words_with_letter(text, forbidden_letter):
-    forbidden_letter = forbidden_letter.lower()
-    words = text.split(" ")
-    new_text = ""
-    for word in words:
-        clean_word = word.lower()
-        if forbidden_letter not in clean_word:
-            new_text += word + " "
-    return new_text
+######## Q2 ########
 
+fun1_def = (declarative
+    .function("remove_words_with_letter")
+    .params("text", "forbidden_letter")
+    .returnType(str)
+)
 sentence = "I am not very good at these funny little word games."
-censored_text_e = remove_words_with_letter(sentence, "e")
-print(censored_text_e)
-censored_text_a = remove_words_with_letter(sentence, "a")
-print(censored_text_a)
 
-other_sentence = "Edward was a tough customer."
+@test()
+def test1_1():
+    state = fun1_def.call(sentence, "e")()
+    output = state.returned.strip(" ./,';!?'")
+    assert output == "I am not good at funny word"
 
-# exc2
-def longest_repetition(numbers):
-    last = None
-    rep = 0
-    longest = 0
-    for i in numbers:
-        if i == last:
-            rep += 1
-        else:
-            rep = 1
-        if rep > longest:
-            longest = rep
-        last = i
-    return longest
+@test()
+def test1_2():
+    state = fun1_def.call(sentence, "a")()
+    output = state.returned.strip(" ./,';!?'")
+    assert output == "I not very good these funny little word"
+
+######## Q2 ########
 
 
+fun2_def = (declarative
+    .function("longest_repetition")
+    .params("numbers")
+    .returnType(int)
+)
 
-numbers1 = [1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1]
-print(longest_repetition(numbers1))
-numbers2 = [1, 1, 3, 3, 3, 3, 4, 4, 4]
-print(longest_repetition(numbers2))
+test2_1 = test()(fun2_def
+    .call([1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1])
+    .returns(6)
+)
+
+test2_2 = test()(fun2_def
+    .call([1, 1, 3, 3, 3, 3, 4, 4, 4])
+    .returns(4)
+)
 
 
-# exc3
+
+
+######## Q3 ########
+
+
+fun3_def = (declarative
+    .function("hatcolor_frequency")
+    .params("peoples_hatcolor")
+    .returnType(dict)
+)
+
 peoples_hatcolor = {
     "Janeth":"black",
     "Berto":"green",
@@ -59,13 +69,7 @@ peoples_hatcolor = {
     "Leonardo":"pink"
 }
 
-def hatcolor_frequency(peoples_hatcolor):
-    color_frequency = {}
-    for color in peoples_hatcolor.values():
-        if color not in color_frequency:
-            color_frequency[color] = 0
-        color_frequency[color] += 1
-    return color_frequency
-
-frequency_of_colors = hatcolor_frequency(peoples_hatcolor)
-print(frequency_of_colors)
+test3_1 = test()(fun3_def
+    .call(peoples_hatcolor)
+    .returns({'black': 1, 'green': 3, 'purple': 1, 'pink': 3, 'red': 1, 'yellow': 1})
+)
